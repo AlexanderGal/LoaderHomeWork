@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.homework.sbt.loaderhomework.PersonListActivity">
     <item
-        android:id="@+id/add_new_data"
+        android:id="@+id/add_new_person_menu_item"
         android:orderInCategory="1"
-        android:title="@string/add_new_data"
+        android:title="@string/add_new_person"
         app:showAsAction="never" />
 </menu>

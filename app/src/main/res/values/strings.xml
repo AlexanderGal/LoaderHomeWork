@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">LoaderHomeWork</string>
-    <string name="add_new_data">Add new data</string>
+    <string name="person_first_name">Person first naem</string>
+    <string name="person_last_name">Person last name</string>
+    <string name="person_last_age">Person age</string>
+    <string name="person_age">Person age</string>
+    <string name="add_new_person">Add new Person</string>
 </resources>

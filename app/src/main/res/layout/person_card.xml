@@ -2,35 +2,41 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aps="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/person_card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     aps:cardCornerRadius="@dimen/cardview_default_radius"
     aps:cardUseCompatPadding="true">
 
     <LinearLayout
+        android:id="@+id/person_card_linerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/text_padding">
 
         <TextView
-            android:id="@+id/person_first_name_tv"
+            android:id="@+id/person_firstname_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/text_padding"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             tools:text="First Name" />
 
         <TextView
-            android:id="@+id/person_last_name_tv"
+            android:id="@+id/person_lastname_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/text_padding"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             tools:text="Last Name" />
 
         <TextView
-            android:id="@+id/person_age_tv"
+            android:id="@+id/person_age_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/text_padding"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             tools:text="Age" />
     </LinearLayout>
 
