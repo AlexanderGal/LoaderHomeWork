@@ -9,21 +9,27 @@ import android.widget.TextView;
 
 import com.homework.sbt.loaderhomework.R;
 import com.homework.sbt.loaderhomework.data.Person;
-import com.homework.sbt.loaderhomework.storage.PersonStorage;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Простой класс Adapter.
+ */
 public class RecyclerPersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final static String TAG = RecyclerPersonAdapter.class.getCanonicalName();
     private final List<Person> mPersons;
 
-    public RecyclerPersonAdapter(PersonStorage personStorage) {
+    public RecyclerPersonAdapter() {
         Log.e(TAG, "RecyclerPersonAdapter constructor");
-        mPersons = personStorage.getmPersonList();
+        mPersons = new ArrayList<>();
     }
 
+    //Меняем данные из загруженного листа в текущий лист адаптера
+    //Сообщаем адаптеру о изменениях, полностью перересовываем его
     public void setmPersons(List<Person> list) {
+        Log.e(TAG, "public void setmPersons(List<Person> list)");
+        mPersons.clear();
         mPersons.addAll(list);
         notifyDataSetChanged();
     }
@@ -31,7 +37,7 @@ public class RecyclerPersonAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.e(TAG, "public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)");
-        return new PersonViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.person_card, parent, false));
+        return new PersonViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.person_list_card, parent, false));
     }
 
     @Override

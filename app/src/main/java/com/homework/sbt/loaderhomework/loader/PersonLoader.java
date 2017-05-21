@@ -27,7 +27,6 @@ public class PersonLoader extends AsyncTaskLoader<List<Person>> implements Perso
     @Override
     public List<Person> loadInBackground() {
         Log.e(TAG, "public List<Person> loadInBackground()");
-        SystemClock.sleep(500);
         return mPersonStorage.getmPersonList();
     }
 
@@ -35,19 +34,18 @@ public class PersonLoader extends AsyncTaskLoader<List<Person>> implements Perso
     //Если да - запускаем загрузку, нет возвращаем кэшированый результат
     @Override
     protected void onStartLoading() {
+        super.onStartLoading();
         Log.e(TAG, "protected void onStartLoading()");
         if (mCachedPersonList == null || takeContentChanged()) {
             forceLoad();
-        } else {
-            deliverResult(mCachedPersonList);
         }
     }
 
     //Возвращаем результат, и сохраняем его в кэш
     @Override
     public void deliverResult(List<Person> data) {
-        Log.e(TAG, "public void deliverResult(List<Person> data)");
         super.deliverResult(data);
+        Log.e(TAG, "public void deliverResult(List<Person> data)");
         mCachedPersonList = data;
     }
 
@@ -56,7 +54,6 @@ public class PersonLoader extends AsyncTaskLoader<List<Person>> implements Perso
     protected void onReset() {
         Log.e(TAG, "protected void onReset()");
         mPersonStorage.removeOnContentChangeListner(this);
-        super.onReset();
     }
 
     //При добавлении пользователя в лист, сообщаем об этом лоадеру

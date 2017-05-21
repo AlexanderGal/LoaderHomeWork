@@ -1,4 +1,4 @@
-package com.homework.sbt.loaderhomework;
+package com.homework.sbt.loaderhomework.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.homework.sbt.loaderhomework.R;
 import com.homework.sbt.loaderhomework.adapter.RecyclerPersonAdapter;
-import com.homework.sbt.loaderhomework.application.PersonLoaderApplication;
 import com.homework.sbt.loaderhomework.data.Person;
 import com.homework.sbt.loaderhomework.loader.PersonLoader;
 import com.homework.sbt.loaderhomework.storage.PersonStorage;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class PersonListActivity extends AppCompatActivity {
     private static final String TAG = PersonListActivity.class.getCanonicalName();
-    private static final int LOADER_ID = 1234;
+    private static final int LOADER_ID = 431234;
 
     private RecyclerView mRecyclerView;
     private RecyclerPersonAdapter mRecyclerPersonAdapter;
@@ -40,7 +40,7 @@ public class PersonListActivity extends AppCompatActivity {
         mPersonStorage = provider.getPersonStorage();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mRecyclerPersonAdapter = new RecyclerPersonAdapter(mPersonStorage);
+        mRecyclerPersonAdapter = new RecyclerPersonAdapter();
         mRecyclerView.setAdapter(mRecyclerPersonAdapter);
 
         getSupportLoaderManager().initLoader(LOADER_ID, null, new PersonLoaderCallbacks());
@@ -58,7 +58,7 @@ public class PersonListActivity extends AppCompatActivity {
         Log.e(TAG, "public boolean onOptionsItemSelected(MenuItem item)");
         int id = item.getItemId();
         if (id == R.id.add_new_person_menu_item) {
-            startActivity(new Intent(this, AddPersonActivity.class));
+            startActivity(new Intent(this, PersonAddActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -76,7 +76,6 @@ public class PersonListActivity extends AppCompatActivity {
         @Override
         public void onLoadFinished(Loader<List<Person>> loader, List<Person> data) {
             Log.e(TAG, "public void onLoadFinished(Loader<List<Person>> loader, List<Person> data)");
-            Log.e(TAG, data.toString());
             mRecyclerPersonAdapter.setmPersons(data);
         }
 

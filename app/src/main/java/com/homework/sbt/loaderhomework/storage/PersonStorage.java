@@ -51,14 +51,18 @@ public class PersonStorage {
         }
     }
 
+    //Возвращаем лист персон
+    //Оборачиваем в новый ArrayList, для проверки в LoaderManager.onLoadComplete
+    //и вызова callOnLoadFinished(loader, data)
     public List<Person> getmPersonList() {
-        return mPersonList;
+        return new ArrayList<>(mPersonList);
     }
 
     public void addOnContentChangeListner(OnContentChangeListner listner) {
         mOnContentChangeListners.add(listner);
     }
 
+    //нереализован
     public void removeOnContentChangeListner(OnContentChangeListner listner) {
         mOnContentChangeListners.remove(listner);
     }
