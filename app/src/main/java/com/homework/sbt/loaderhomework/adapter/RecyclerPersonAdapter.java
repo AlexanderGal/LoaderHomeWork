@@ -24,7 +24,6 @@ public class RecyclerPersonAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     public void setmPersons(List<Person> list) {
-        mPersons.clear();
         mPersons.addAll(list);
         notifyDataSetChanged();
     }
